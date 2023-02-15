@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./pages/styles.css" />
+    
+  </head>
+  <body class="body">
+    <header class="header">
+      <img class="header__logo" src="./images/Vector.png" />
+    </header>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__avatar" src="./images/жак.jpg" />
+        <div class="profile__info">
+          <div class="profile__info2">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button
+              class="profile__edit_button profile__edit_button2"
+              type="button"
+            ></button>
+          </div>
+          <h2 class="profile__subtitle">Исследователь океана</h2>
+        </div>
+        <button class="profile__button" type="button">
+          <img class="profile__button__vector" src="./images/плюсик.png" />
+        </button>
+      </section>
+      <section class="elements">
+        <div class="card">
+          <img class="card__photography" src="./images/Cabo_da_Roca.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Cabo da Roca</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__photography" src="./images/Hoover_Dam.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Hoover Dam</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__photography" src="./images/Mont-Fallère.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Mont-Fallère</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__photography" src="./images/гриндевальд.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Grindelwald</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__photography" src="./images/кабардинка.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Кабардинка</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card__photography" src="./images/эльбрус.jpg" />
+          <div class="card__info">
+            <h2 class="card__title">Эльбрус</h2>
+            <button class="card__button" type="button">
+              <img class="card__button__icon" src="./images/сердечко.svg" />
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <span class="footer__copyright">&copy;Mesto Russia</span>
+    </footer>
+    <section class="popup">
+      <div class="popup__form">
+        <button type="button" class="popup__exit" name="popup_exit">
+          закрыть
+        </button>        
+      <div class="form">
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input class="popup__input_name" />
+        <input class="popup__input_job" />
+        <button type="submit" class="popup__save" name="popup_save">
+          Сохранить
+        </button>
+      </div>
+    </div>
+    </section>
+    <script src="./script/index.js"></script>
+  </body>
+</html>
