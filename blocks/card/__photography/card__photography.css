@@ -1,0 +1,8 @@
+.card__photography {
+    width: 282px;
+    height: 282px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+  }

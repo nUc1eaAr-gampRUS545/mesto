@@ -1,0 +1,6 @@
+.profile__edit_button_act {
+    background-image: url("../../../images/profile/editButton.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 8px;
+  }

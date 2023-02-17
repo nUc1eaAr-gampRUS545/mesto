@@ -1,0 +1,18 @@
+.card__button {
+    display: block;
+    background-color: white;
+    border: 0;
+    background-image: url(../../../images/card/сердечко.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 35px 30px 25px 0px;
+    padding: 0;
+    width: 22px;
+    height: 22px;
+    transition: opacity 0.2s ease-in-out;
+    transition: transform 0.7s linear;
+  }
+  .card__button:hover {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }

@@ -1,0 +1,16 @@
+.popup__exit {
+    background-image: url("../../../images/popup/Close-Icon.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    background-color: transparent;
+    height: 32px;
+    margin-left: auto;
+    display: flex;
+    color: transparent;
+    border: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .popup__exit:hover{
+    opacity: .6;
+  }

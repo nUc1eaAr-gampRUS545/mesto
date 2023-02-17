@@ -1,0 +1,7 @@
+.popup__input_job {
+    border: 0px;
+    border-bottom: 1px solid #000000;
+    width: calc(100% - 72px);
+    margin: 30px auto 0 auto;
+    outline: none;
+  }
