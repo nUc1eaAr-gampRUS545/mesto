@@ -1,4 +1,4 @@
-.popup__input_name {
+.popup__input {
     border: 0px;
     outline: none;
     border-bottom: 1px solid #000000;
@@ -12,7 +12,7 @@
     color: #000000;
   }
 @media screen and (max-width:600px){
-  .popup__input_name{
+  .popup__input{
     margin-left: 20px;
     padding-bottom: 10px;
   }
