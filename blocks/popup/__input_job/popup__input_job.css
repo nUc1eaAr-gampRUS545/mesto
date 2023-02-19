@@ -1,7 +1,19 @@
 .popup__input_job {
-    border: 0px;
-    border-bottom: 1px solid #000000;
-    width: calc(100% - 72px);
-    margin: 30px auto 0 auto;
-    outline: none;
+  border: 0px;
+  border-bottom: 1px solid #000000;
+  width: calc(100% - 72px);
+  margin: 30px auto 0 auto;
+  outline: none;
+  font-family: "Inter", "Arial", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.214;
+}
+@media screen and (max-width:600px){
+  .popup__input_job{
+    margin-left: 20px;
+    margin-top: 26px;
+    padding-bottom: 10px;
   }
+}

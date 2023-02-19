@@ -1,5 +1,5 @@
 .elements {
-    margin: 50px auto 0 auto;
+    margin: 53px auto 0 auto;
     display: grid;
     max-width: 880px;
     grid-template-columns: repeat(3, 282px);
@@ -22,4 +22,3 @@
       grid-template-columns: repeat(1, 282px);
     }
   }
-  

@@ -14,3 +14,11 @@
   .popup__exit:hover{
     opacity: .6;
   }
+@media screen and (max-width:600px){
+  .popup__exit{
+    background-image: url("../../../images/popup/Close-Icon320.svg");
+    margin-bottom: 10px;
+    width: 20px;
+  }
+
+}

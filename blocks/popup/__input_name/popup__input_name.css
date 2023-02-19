@@ -11,3 +11,9 @@
     line-height: 1.214;
     color: #000000;
   }
+@media screen and (max-width:600px){
+  .popup__input_name{
+    margin-left: 20px;
+    padding-bottom: 10px;
+  }
+}
