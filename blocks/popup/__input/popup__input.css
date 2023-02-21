@@ -1,6 +1,6 @@
-.popup__input-job {
+.popup__input {
   border: 0px;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
   width: calc(100% - 72px);
   margin: 30px auto 0 auto;
   outline: none;
@@ -11,9 +11,10 @@
   line-height: 1.214;
 }
 @media screen and (max-width:600px){
-  .popup__input-job{
-    margin-left: 20px;
-    margin-top: 26px;
+  .popup__input{
+    width: calc(100% - 44px);
+    margin-left: 22px;
+    margin-top: 30px;
     padding-bottom: 10px;
   }
 }

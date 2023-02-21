@@ -1,15 +1,14 @@
-.popup__input_name {
+.popup__input {
   border: 0px;
-  outline: none;
-  border-bottom: 1px solid #000000;
+  border-bottom: 1px solid rgb(0,0,0);
   width: calc(100% - 72px);
-  margin: 0 auto;
+  margin: 30px auto 0 auto;
+  outline: none;
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.214;
-  color: #000000;
 }
 
 @media screen and (max-width: 600px) {

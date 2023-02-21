@@ -14,83 +14,114 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/profile/жак.jpg" />
+        <img
+          class="profile__avatar"
+          src="./images/profile/жак.jpg"
+          alt="Иконка"
+        />
         <div class="profile__info">
           <div class="profile__info-block">
             <h1 class="profile__name">Жак&ndash;Ив Кусто</h1>
-            <button
-              class="profile__editButton profile__editButton_act"
-              type="button"
-            ></button>
+            <button class="profile__editbutton" type="button"></button>
           </div>
           <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__button" type="button">
+          <img class="profile__addbutton" src="./images/profile/плюс.svg">
         </button>
       </section>
       <section class="elements">
-        <div class="card">
-          <img class="card__photography" src="./images/card/Cabo_da_Roca.jpg" />
+        <article class="card">
+          <img
+            class="card__photography"
+            src="./images/card/Cabo_da_Roca.jpg"
+            alt="мыс Cabo da Roca"
+          />
           <div class="card__info">
             <h2 class="card__title">Cabo da Roca</h2>
-            <button class="card__button" type="checkbox"></button>
+            <button class="card__button" type="button"></button>
           </div>
-        </div>
-        <div class="card">
-          <img class="card__photography" src="./images/card/Hoover_Dam.jpg" />
+        </article>
+        <article class="card">
+          <img
+            class="card__photography"
+            src="./images/card/Hoover_Dam.jpg"
+            alt="Плотина Гувера"
+          />
           <div class="card__info">
             <h2 class="card__title">Hoover Dam</h2>
-            <button class="card__button" type="checkbox"></button>
+            <button class="card__button" type="button"></button>
           </div>
-        </div>
-        <div class="card">
-          <img class="card__photography" src="./images/card/Mont-Fallère.jpg" />
+        </article>
+        <article class="card">
+          <img
+            class="card__photography"
+            src="./images/card/Mont-Fallère.jpg"
+            alt="Гора Mont-Fallère, Италия"
+          />
           <div class="card__info">
             <h2 class="card__title">Mont-Fallère</h2>
-            <button class="card__button" type="checkbox"></button>
+            <button class="card__button" type="button"></button>
           </div>
-        </div>
+        </article>
         <div class="card">
-          <img class="card__photography" src="./images/card/гриндевальд.jpg" />
+          <img
+            class="card__photography"
+            src="./images/card/гриндевальд.jpg"
+            alt="Горнолыжный курорт Гриндевальд, Швейцария"
+          />
           <div class="card__info">
             <h2 class="card__title">Grindelwald</h2>
-            <button class="card__button" type="checkbox"></button>
+            <button class="card__button" type="button"></button>
           </div>
         </div>
-        <div class="card">
-          <img class="card__photography" src="./images/card/olga-nayda-5w8we0Nw8CU-unsplash.jpg" />
+        <article class="card">
+          <img
+            class="card__photography"
+            src="./images/card/olga-nayda-5w8we0Nw8CU-unsplash.jpg"
+            alt="Город-курорт Кабардинка"
+          />
           <div class="card__info">
-            <h2 class="card__title">Кабардинка</h2>
-            <button class="card__button" type="checkbox"></button>
+            <h2 class="card__title">Kabardinka</h2>
+            <button class="card__button" type="button"></button>
           </div>
-        </div>
-        <div class="card">
-          <img class="card__photography" src="./images/card/эльбрус.jpg" />
+        </article>
+        <article class="card">
+          <img
+            class="card__photography"
+            src="./images/card/эльбрус.jpg"
+            alt="Гора Эльбрус"
+          />
           <div class="card__info">
-            <h2 class="card__title">Эльбрус</h2>
-            <button class="card__button" type="checkbox"></button>
+            <h2 class="card__title">Elbrus</h2>
+            <button class="card__button" type="button"></button>
           </div>
-        </div>
+        </article>
       </section>
     </main>
     <footer class="footer">
-      <span class="footer__copyright">&copy;&nbsp;2023&nbsp;Mesto&nbsp;Russia</span>
+      <span class="footer__copyright"
+        >&copy;&nbsp;2023&nbsp;Mesto&nbsp;Russia</span
+      >
     </footer>
-    <section class="popup">
-      <div class="popup__form">
+    <div class="popup">
+      <div class="popup__window">
         <button type="button" class="popup__exit" name="popup_exit">
-          закрыть
         </button>
-      <div class="form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input-name" />
-        <input class="popup__input-job" />
-        <button type="submit" class="popup__saved" name="popup_save" value="save">
-          Сохранить
-        </button>
+        <form class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input class="popup__input" name="name" id="name" type="text"/>
+          <input class="popup__input" name="job" id="job" type="text"/>
+          <button
+            type="submit"
+            class="popup__saved"
+            name="popup_save"
+            value="save"
+          >
+            Сохранить
+          </button>
+        </form>
       </div>
     </div>
-    </section>
-
   </body>
 </html>
