@@ -1,10 +1,14 @@
 .popup__window {
-    width: 510px;
-    height: 400px;
-    margin-bottom: 33px;
+  width: 432px;
+  background-color: #fff;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+@media screen and (max-width:600px){
+  .popup__window{
+    width: 282px;
+    padding-bottom: 25px;
   }
-  @media screen and (max-width:600px){
-    .popup__window{
-        width: 282px;
-    }
-  }
+}
