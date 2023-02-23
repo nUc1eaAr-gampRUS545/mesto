@@ -105,7 +105,10 @@
       >
     </footer>
     <div class="popup">
-        <form class="popup__container" name="popup_form">
+      <div class="popup__container">
+        <button type="button" class="popup__exit" name="popup_exit">
+        </button>
+        <form class="popup__content" name="popup_form">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input class="popup__input" name="name" id="name" type="text"/>
           <input class="popup__input" name="job" id="job" type="text"/>
@@ -116,10 +119,9 @@
           >
             Сохранить
           </button>
-          <button type="button" class="popup__exit" name="popup_exit">
-          </button>
+          
         </form>
-        
+      </div>
     </div>
   </body>
 </html>
