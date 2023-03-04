@@ -83,7 +83,7 @@ function createCard(card) {
 function Card(evt) {
   let image = document.querySelector(".popup__image");//обращаемся и записываем в переменную фотографию из пупапа
   image.src = evt.target.src;//передаем url фотографии пупапа из нажатой фотографии из карточки
-  let popupTitle = document.querySelector(".popup__title_type_image");//обращаемся и записываем в переменную подпись под картинкой пупапа
+  let popupTitle = document.querySelector(".popup__caption");//обращаемся и записываем в переменную подпись под картинкой пупапа
   popupTitle.textContent = evt.target.alt;//передаем в переменную подпись значение атрибута alt  пупапа из нажатой фотографии из карточки
   document.querySelector(".popup_type_image").classList.add("popup_opened");//добавляем пупапу модификатор, открывающий его настранице
  
