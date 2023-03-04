@@ -81,7 +81,7 @@ function createCard(card) {
   popupImageExit.addEventListener("click", function () {//навешиваем слушателя на кнопку выйти
   document.querySelector(".popup_type_image").classList.remove("popup_opened");});//при нажати на кнопку выйти, удаляем модификатор, открывающий пупап
 function Card(evt) {
-  let image = document.querySelector(".popup__image_type_image");//обращаемся и записываем в переменную фотографию из пупапа
+  let image = document.querySelector(".popup__image");//обращаемся и записываем в переменную фотографию из пупапа
   image.src = evt.target.src;//передаем url фотографии пупапа из нажатой фотографии из карточки
   let popupTitle = document.querySelector(".popup__title_type_image");//обращаемся и записываем в переменную подпись под картинкой пупапа
   popupTitle.textContent = evt.target.alt;//передаем в переменную подпись значение атрибута alt  пупапа из нажатой фотографии из карточки
@@ -100,13 +100,13 @@ function deleteCard(evt) {
 
 //функция открытия пупапа для добавления  карточек
 function openAddCard() {
-  let popup = document.querySelector(".popup__addcards");//обращаемся и записываем в переменную пупап "добавление карточки"
+  let popup = document.querySelector(".popup__add-cards");//обращаемся и записываем в переменную пупап "добавление карточки"
   popup.classList.add("popup_opened");//добавляем открывающий модификатор пупапу для довления карточек
 }
 
 //функция закрытия пупапа для добавления  карточек
 function closeAddCard() {
-  let popup = document.querySelector(".popup__addcards");//обращаемся и записываем в переменную пупап "добавление карточки"
+  let popup = document.querySelector(".popup__add-cards");//обращаемся и записываем в переменную пупап "добавление карточки"
   popup.classList.remove("popup_opened");//удаляем открывающий модификатор пупапу для довления карточек
 }
 let closePopupAddCards = document.querySelector(".popup__exit-addcards");//обращаемся и записываем в переменную кнопку закрытияпупа
