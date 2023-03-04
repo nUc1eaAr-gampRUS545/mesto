@@ -100,13 +100,13 @@ function deleteCard(evt) {
 
 //функция открытия пупапа для добавления  карточек
 function openAddCard() {
-  let popup = document.querySelector(".popup__add-cards");//обращаемся и записываем в переменную пупап "добавление карточки"
+  let popup = document.querySelector(".popup__cards");//обращаемся и записываем в переменную пупап "добавление карточки"
   popup.classList.add("popup_opened");//добавляем открывающий модификатор пупапу для довления карточек
 }
 
 //функция закрытия пупапа для добавления  карточек
 function closeAddCard() {
-  let popup = document.querySelector(".popup__add-cards");//обращаемся и записываем в переменную пупап "добавление карточки"
+  let popup = document.querySelector(".popup__cards");//обращаемся и записываем в переменную пупап "добавление карточки"
   popup.classList.remove("popup_opened");//удаляем открывающий модификатор пупапу для довления карточек
 }
 let closePopupAddCards = document.querySelector(".popup__exit-addcards");//обращаемся и записываем в переменную кнопку закрытияпупа
