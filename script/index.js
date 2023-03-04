@@ -51,6 +51,7 @@ let cards = [
   { name: "Elbrus", image: "./images/card/Elbrus.jpg"},
 ];
 
+//функция создания карточек
 function createCard(card) {
   let newCard = document.querySelector(".copy__card").content.cloneNode(true);//копируем template заготовку
   let popupImage = newCard.querySelector(".card__photography");//обращаемся и записываем в переменную фотографию из карточки
@@ -72,7 +73,7 @@ function createCard(card) {
   bascket.addEventListener("click", deleteCard);//навешиваем слушателя на кнопку корзины
 
   //добавляем в блок elements новую карточку
-  elements.append(newCard);
+  elements.prepend(newCard);
 
   //открываем пупап тип-изображение 
   popupImage.addEventListener("click", Card);//навешиваем слушателя на фотографию из карточки
@@ -89,34 +90,47 @@ function Card(evt) {
 }
 }
 cards.forEach(createCard);//зацикливаем функцию createCard для каждого элемента массива cards
+
+//функция удаления карточек
 function deleteCard(evt) {
   let bascket = evt.target;//определяем, на какую именно корзину мы нажали
   let card = bascket.closest(".card");//определяем ближайшее значение со значением ".card"
   card.remove();//удаляем эту карточку
 }
+
+//функция открытия пупапа для добавления  карточек
 function openAddCard() {
   let popup = document.querySelector(".popup__addcards");//обращаемся и записываем в переменную пупап "добавление карточки"
-  popup.classList.add("popup_opened");
+  popup.classList.add("popup_opened");//добавляем открывающий модификатор пупапу для довления карточек
 }
+
+//функция закрытия пупапа для добавления  карточек
 function closeAddCard() {
-  let popup = document.querySelector(".popup__addcards");
-  popup.classList.remove("popup_opened");
+  let popup = document.querySelector(".popup__addcards");//обращаемся и записываем в переменную пупап "добавление карточки"
+  popup.classList.remove("popup_opened");//удаляем открывающий модификатор пупапу для довления карточек
 }
-let closePopupAddCards = document.querySelector(".popup__exit-addcards");
+let closePopupAddCards = document.querySelector(".popup__exit-addcards");//обращаемся и записываем в переменную кнопку закрытияпупа
 let buttonPopupAddCard = document.querySelector(".profile__button");
-buttonPopupAddCard.addEventListener("click", openAddCard);
-closePopupAddCards.addEventListener("click", closeAddCard);
+buttonPopupAddCard.addEventListener("click", openAddCard);//навешиваем слушателя на кнопку добавления карточек
+closePopupAddCards.addEventListener("click", closeAddCard);//навешиваем слушателя на кнопку добавления карточек
+
+//функция "сохранения" для кнопки сохранить для пупапа создания карточек
 function handleSubmitcard(evt) {
-  evt.preventDefault();
-  let name = document.querySelector("#place_input").value;
-  let image = document.querySelector("#image-url_input").value;
-  let card = { image: image, name: name };
-  createCard(card);
-  closeAddCard();
+  evt.preventDefault();//отмена отправки сохранения сайта
+  let name = document.querySelector("#place_input").value;//считывание информации с формы в переменную 
+  let image = document.querySelector("#image-url_input").value;//считывание информации с формы в переменную 
+  console.log(image)
+  if (name==0 || image==0){
+    closeAddCard();//если в формы ничего не введенно, закрываем пупап и не создаем карточку
+  }
+  else{
+    let card = { image: image, name: name };//создание объекта с информацией из формы
+    createCard(card);//вызов функции с новым объектом в аргументе
+    closeAddCard();//вызов функции закрытия формы 
+  }
+ 
 }
-let saveAddCard = document.querySelector(".form");
-saveAddCard.addEventListener("submit", handleSubmitcard);
+let saveAddCard = document.querySelector(".form");//обращаемся и записываем в переменную блока форм
+saveAddCard.addEventListener("submit", handleSubmitcard);////навешиваем слушателя на кнопку добавления карточек
 
-
-let like = document.querySelector(".card__button");
 

@@ -1,5 +1,8 @@
-.popup__image_type_image{
-    min-width: 330px;
-    max-width: 816px;
-    height: 540px;
+.popup__image_type_image {
+  max-width: 75vw;
+  max-height: 75vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  object-fit: cover;
 }
+
