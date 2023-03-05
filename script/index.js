@@ -1,13 +1,13 @@
 
 const popupExit = document.querySelectorAll(".popup__exit");
-const profilePopup = document.querySelector(".popup__profile");
+const profilePopup = document.querySelector(".popup_type_profile");
 const popupContainer = document.querySelector(".popup__content");
 const openButton = document.querySelector(".profile__edit-button");
 
 const getInput = document.querySelector(".profile__name");
 const getJob = document.querySelector(".profile__job");
-const nameInput = document.querySelector("#name");
-const jobInput = document.querySelector("#job");
+const nameInput = document.querySelector("#nameInput");
+const jobInput = document.querySelector("#jobInput");
 
 const elements = document.querySelector(".elements");
 
@@ -16,10 +16,10 @@ const zoomImg = document.querySelector(".popup__image"); //обращаемся 
 const popupTitleZoomImage = document.querySelector(".popup__caption"); //обращаемся и записываем в переменную подпись под картинкой пупапа
 const popupTypeImage = document.querySelector(".popup_type_image");
 
-const popupTypeAddCards = document.querySelector("#popup_add_cards");
+const popupTypeAddCards = document.querySelector(".popup_type_add-cards");
 const buttonPopupAddCard = document.querySelector(".profile__button");
 
-const saveAddCard = document.querySelector(".form"); //обращаемся и записываем в переменную блока форм
+const saveAddCard = document.querySelector(".popup_type_add-cards"); //обращаемся и записываем в переменную блока форм
 
 popupExit.forEach(function(button){
   const del=button.closest(".popup");
@@ -129,8 +129,8 @@ saveAddCard.addEventListener("submit", handleSubmitcard); ////навешивае
 //функция "сохранения" для кнопки сохранить для пупапа создания карточек
 function handleSubmitcard(evt) {
   evt.preventDefault(); //отмена отправки сохранения сайта
-  const nameInput= document.querySelector("#place_input").value; //считывание информации с формы в переменную
-  const imageInput = document.querySelector("#image-url_input").value; //считывание информации с формы в переменную
+  const nameInput= document.querySelector("#placeInput").value; //считывание информации с формы в переменную
+  const imageInput = document.querySelector("#imageUrlInput").value; //считывание информации с формы в переменную
   if (nameInput == 0 || imageInput == 0) {
     closePopup(popupTypeAddCards); //если в формы ничего не введенно, закрываем пупап и не создаем карточку
   } else {

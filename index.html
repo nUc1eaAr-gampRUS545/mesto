@@ -51,42 +51,41 @@
         >&copy;&nbsp;2023&nbsp;Mesto&nbsp;Russia</span
       >
     </footer>
-    <div class="popup popup__profile" id="cross">
-      <div class="popup__container">
-        <button type="button" class="popup__exit" name="popup_exit">
+    <div class="popup popup_type_profile">
+      <div class="popup__container popup__container_type_profile">
+        <button type="button" class="popup__exit" >
         </button>
-        <form class="popup__content" name="popup_form">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__input" name="name" id="name" type="text" placeholder="Имя"/>
-          <input class="popup__input" name="job" id="job" type="text" placeholder="Работа"/>
+        <form class="popup__content popup__content_type_profile">
+          <h2 class="popup__title popup__title_type_profile">Редактировать профиль</h2>
+          <input class="popup__input popup__input_type_profile" id="nameInput" type="text" placeholder="Имя"/>
+          <input class="popup__input popup__input_type_profile" id="jobInput" type="text" placeholder="Работа"/>
           <button
             type="submit"
-            class="popup__saved"
-            name="popup_save">
+            class="popup__saved popup__saved_type_profile">
             Сохранить
           </button>
         </form>
       </div>
     </div>
-    
-    <div class="popup" id="popup_add_cards" id="cross">
-      <div class="popup__container">
-        <button type="button" class="popup__exit popup__exit-addcards" name="popup_exit">
+
+    <div class="popup popup_type_add-cards">
+      <div class="popup__container popup__container_type_add-cards">
+        <button type="button" class="popup__exit popup__exit_type_add-cards" >
         </button>
-        <form class="popup__content form" name="popup_form">
-          <h2 class="popup__title">Новое место</h2>
-          <input class="popup__input" id='place_input' name="name" type="text" placeholder="Название"/>
-          <input class="popup__input" id='image-url_input' name="job" type="text" placeholder="Ссылка на картинку"/>
-          <button type="submit" class="popup__saved" name="popup_save">
+        <form class="popup__content popup__content_type_add-cards">
+          <h2 class="popup__title popup__title_type_add-cards">Новое место</h2>
+          <input class="popup__input popup__input_type_add-cards" id='placeInput' type="text" placeholder="Название"/>
+          <input class="popup__input popup__input_type_add-cards" id='imageUrlInput' type="text" placeholder="Ссылка на картинку"/>
+          <button type="submit" class="popup__saved popup__saved_type_add-cards">
             Создать</button>
         </form>
       </div>
     </div>
 
-    <div class="popup popup_type_image" id="cross">
+    <div class="popup popup_type_image">
       <div class="popup__container popup__container_type_image" >
         <button class="popup__exit popup__exit_type_image" type="button"></button>
-        <img src="#" alt="" class="popup__image">
+        <img src="#" alt="" class="popup__image popup__image_type_image">
         <h2 class="popup__caption"></h2>
       </div>
     </div>
