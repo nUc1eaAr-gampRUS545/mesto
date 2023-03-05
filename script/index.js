@@ -1,7 +1,7 @@
 
 const popupExit = document.querySelectorAll(".popup__exit");
 const profilePopup = document.querySelector(".popup_type_profile");
-const popupContainer = document.querySelector(".popup__content");
+const popupContainer = document.querySelector(".popup__content_type_profile");
 const openButton = document.querySelector(".profile__edit-button");
 
 const getInput = document.querySelector(".profile__name");
