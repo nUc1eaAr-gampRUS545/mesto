@@ -20,8 +20,8 @@ const popupTypeAddCards = document.querySelector(".popup_type_add-cards");
 const buttonPopupAddCard = document.querySelector(".profile__button");
 
 const saveAddCard = document.querySelector(".popup_type_add-cards"); //обращаемся и записываем в переменную блока форм
-const nameInputTypeAddCards= document.querySelector("#placeInput").value; //считывание информации с формы в переменную
-const imageInputTypeAddCards = document.querySelector("#imageUrlInput").value; //считывание информации с формы в переменную
+const nameInputTypeAddCards= document.querySelector("#placeInput"); //считывание информации с формы в переменную
+const imageInputTypeAddCards = document.querySelector("#imageUrlInput"); //считывание информации с формы в переменную
 popupExit.forEach(function(button){
   const del=button.closest(".popup");
   button.addEventListener("click",function(){
@@ -129,11 +129,13 @@ saveAddCard.addEventListener("submit", handleSubmitcard); ////навешивае
 
 //функция "сохранения" для кнопки сохранить для пупапа создания карточек
 function handleSubmitcard(evt) {
+  const newName=nameInputTypeAddCards.value;
+  const newImage=imageInputTypeAddCards.value;
   evt.preventDefault(); //отмена отправки сохранения сайта
-  if (nameInputTypeAddCards == 0 || imageInputTypeAddCards == 0) {
+  if (newName == 0 || newImage == 0) {
     closePopup(popupTypeAddCards); //если в формы ничего не введенно, закрываем пупап и не создаем карточку
   } else {
-    const newCard = { image: imageInput, name: nameInput }; //создание объекта с информацией из формы
+    const newCard = { image: newImage, name: newName }; //создание объекта с информацией из формы
     addInitialPlaces(newCard); //вызов функции с новым объектом в аргументе
     closePopup(popupTypeAddCards); //вызов функции закрытия формы
     evt.target.reset();
