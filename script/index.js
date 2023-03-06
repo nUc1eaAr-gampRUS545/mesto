@@ -20,7 +20,8 @@ const popupTypeAddCards = document.querySelector(".popup_type_add-cards");
 const buttonPopupAddCard = document.querySelector(".profile__button");
 
 const saveAddCard = document.querySelector(".popup_type_add-cards"); //обращаемся и записываем в переменную блока форм
-
+const nameInputTypeAddCards= document.querySelector("#placeInput").value; //считывание информации с формы в переменную
+const imageInputTypeAddCards = document.querySelector("#imageUrlInput").value; //считывание информации с формы в переменную
 popupExit.forEach(function(button){
   const del=button.closest(".popup");
   button.addEventListener("click",function(){
@@ -29,8 +30,6 @@ popupExit.forEach(function(button){
 });
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  nameInput.value = getInput.textContent;
-  jobInput.value = getJob.textContent;
 }
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
@@ -43,6 +42,8 @@ function handleFormSubmit(evt) {
   closePopup(profilePopup);
 }
 openButton.addEventListener("click", function () {
+  nameInput.value = getInput.textContent;
+  jobInput.value = getJob.textContent;
   openPopup(profilePopup);
 });
 popupContainer.addEventListener("submit", handleFormSubmit);
@@ -102,8 +103,8 @@ function activateLike(evt) {
 //функция удаления карточек
 function deleteCard(evt) {
   const bascket = evt.target; //определяем, на какую именно корзину мы нажали
-  const DeleteCard = bascket.closest(".card"); //определяем ближайшее значение со значением ".card"
-  DeleteCard.remove(); //удаляем эту карточку
+  const deleteCard = bascket.closest(".card"); //определяем ближайшее значение со значением ".card"
+  deleteCard.remove(); //удаляем эту карточку
 }
 
 
@@ -129,15 +130,13 @@ saveAddCard.addEventListener("submit", handleSubmitcard); ////навешивае
 //функция "сохранения" для кнопки сохранить для пупапа создания карточек
 function handleSubmitcard(evt) {
   evt.preventDefault(); //отмена отправки сохранения сайта
-  const nameInput= document.querySelector("#placeInput").value; //считывание информации с формы в переменную
-  const imageInput = document.querySelector("#imageUrlInput").value; //считывание информации с формы в переменную
-  if (nameInput == 0 || imageInput == 0) {
+  if (nameInputTypeAddCards == 0 || imageInputTypeAddCards == 0) {
     closePopup(popupTypeAddCards); //если в формы ничего не введенно, закрываем пупап и не создаем карточку
   } else {
     const newCard = { image: imageInput, name: nameInput }; //создание объекта с информацией из формы
     addInitialPlaces(newCard); //вызов функции с новым объектом в аргументе
     closePopup(popupTypeAddCards); //вызов функции закрытия формы
-    nameInput=evt.target.reset();
-    imageInput=evt.target.reset();
+    evt.target.reset();
+    evt.target.reset();
   }
 }
