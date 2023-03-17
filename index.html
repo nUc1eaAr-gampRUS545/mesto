@@ -7,6 +7,7 @@
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <script src="./script/index.js" defer></script>
+    <script src="./script/validation.js" defer></script>
   </head>
   <body class="page">
     <header class="header">
@@ -55,13 +56,15 @@
       <div class="popup__container popup__container_type_profile">
         <button type="button" class="popup__exit" >
         </button>
-        <form class="popup__content popup__content_type_profile">
+        <form class="popup__container popup__content_type_profile">
           <h2 class="popup__title popup__title_type_profile">Редактировать профиль</h2>
-          <input class="popup__input popup__input_type_profile" id="nameInput" type="text" placeholder="Имя"/>
-          <input class="popup__input popup__input_type_profile" id="jobInput" type="text" placeholder="Работа"/>
+          <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="40" id="name" type="text" placeholder="Имя"/>
+          <span class="popup__input-error  popup__input-error_type_name"></span>
+          <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="200" id="job" type="text" placeholder="Работа"/>
+          <span class="popup__input-error  popup__input-error_type_job"></span>
           <button
             type="submit"
-            class="popup__saved popup__saved_type_profile">
+            class="popup__saved  popup__saved_type_profile">
             Сохранить
           </button>
         </form>
@@ -74,9 +77,11 @@
         </button>
         <form class="popup__content popup__content_type_add-cards">
           <h2 class="popup__title popup__title_type_add-cards">Новое место</h2>
-          <input class="popup__input popup__input_type_add-cards" id='placeInput' type="text" placeholder="Название"/>
-          <input class="popup__input popup__input_type_add-cards" id='imageUrlInput' type="text" placeholder="Ссылка на картинку"/>
-          <button type="submit" class="popup__saved popup__saved_type_add-cards">
+          <input class="popup__input popup__input_type_add-cards" id="text" required type="text" placeholder="Название"/>
+          <span class="popup__input-error popup__input-error_type_text" ></span>
+          <input id="url" class="popup__input popup__input_type_add-cards" required  type="url" placeholder="Ссылка на картинку"/>
+          <span class="popup__input-error  popup__input-error_type_url"></span>
+          <button type="submit" class="popup__saved-invalid popup__saved popup__saved_type_add-cards">
             Создать</button>
         </form>
       </div>
