@@ -67,6 +67,4 @@ enableValidation({
     submitButonSelector:".popup__saved",
     invalidSubmitButtonClass:"popup__saved-invalid",
 
-
-
 });
