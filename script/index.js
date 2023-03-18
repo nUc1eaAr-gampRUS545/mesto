@@ -1,5 +1,5 @@
 const popups = Array.from(document.querySelectorAll(".popup"));
-const popupExit = document.querySelectorAll(".popup__exit");
+const popupExitButtons = document.querySelectorAll(".popup__exit");
 const profilePopup = document.querySelector(".popup_type_profile");
 const popupContainer = profilePopup.querySelector(".popup__content");
 const openButton = document.querySelector(".profile__edit-button");
@@ -19,10 +19,13 @@ const popupTypeImage = document.querySelector(".popup_type_image");
 const popupTypeAddCards = document.querySelector(".popup_type_add-cards");
 const buttonPopupAddCard = document.querySelector(".profile__button");
 
+
+
+const buttonSavedAddCard = document.querySelector(".popup__saved_type_add-cards");
 const saveAddCard = document.querySelector(".popup_type_add-cards"); //обращаемся и записываем в переменную блока форм
 const nameInputTypeAddCards= document.querySelector("#text"); //считывание информации с формы в переменную
 const imageInputTypeAddCards = document.querySelector("#url"); //считывание информации с формы в переменную
-popupExit.forEach(function(button){
+popupExitButtons.forEach(function(button){
   const del=button.closest(".popup");
   button.addEventListener("click",function(){
     closePopup(del);
@@ -30,10 +33,6 @@ popupExit.forEach(function(button){
 })
 
 popups.forEach(function(popup){
-  popup.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-      closePopup(popup);
-    }})
   popup.addEventListener('click', function (evt) {
     if(evt.target.classList.contains("popup")){
       closePopup(popup);
@@ -42,11 +41,20 @@ popups.forEach(function(popup){
 });
 
 
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened') 
+    closePopup(openedPopup)
+    
+  }
+}
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown",closeByEscape);
 };
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.addEventListener("keydown",closeByEscape);
 };
 
 function handleFormSubmit(evt) {
@@ -150,5 +158,6 @@ function handleSubmitcard(evt) {
     addInitialPlaces(newCard); //вызов функции с новым объектом в аргументе
     closePopup(popupTypeAddCards); //вызов функции закрытия формы
     evt.target.reset();
-  
+    buttonSavedAddCard.classList.add('popup__saved-invalid');
+    buttonSavedAddCard.disabled=true;
 }
