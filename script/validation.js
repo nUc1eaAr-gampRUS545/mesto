@@ -4,13 +4,15 @@ function showInputError(errorTextElement,validationMessage){
 function hideInputError(errorTextElement){
     errorTextElement.textContent='';
 }
-function checkInpuValidation(input,errorStr){
+function checkInpuValidation(input,errorStr,popupInputInvalidClass){
     const errorMessage=document.querySelector(`${errorStr}${input.id}`);
     if(input.validity.valid){
         hideInputError(errorMessage);
+        input.classList.remove(popupInputInvalidClass)
     }
     else{
-        showInputError(errorMessage, input.validationMessage);
+        input.classList.add(popupInputInvalidClass)
+        showInputError(errorMessage, input.validationMessage,popupInputInvalidClass);
     }
 }
 
@@ -38,13 +40,13 @@ const toggleButtonState=(submitButton,invalidSubmitButtonClass,popupTypeAddCardF
     }
 }
 
-function setEventListener(popupTypeAddCard,popupTypeAddCardForms,errorStr,submitButton,invalidSubmitButtonClass){
+function setEventListener(popupTypeAddCard,popupTypeAddCardForms,errorStr,submitButton,invalidSubmitButtonClass,popupInputInvalidClass){
     popupTypeAddCard.addEventListener("submit",(evt)=>{
         evt.preventDefault();
     });
     popupTypeAddCardForms.forEach((input)=>{
         input.addEventListener("input",(evt)=>{
-            checkInpuValidation(input,errorStr);
+            checkInpuValidation(input,errorStr,popupInputInvalidClass);
             toggleButtonState(submitButton,invalidSubmitButtonClass,popupTypeAddCardForms);
         })
     })
@@ -56,8 +58,8 @@ function enableValidation(config){
     const popupTypeProfileForms=popupTypeProfile.querySelectorAll(config.inputSelector);
     const submitButtonTypeAddCards=popupTypeAddCard.querySelector(config.submitButonSelector);
     const submitButtonTypeProfile=popupTypeProfile.querySelector(config.submitButonSelector);
-    setEventListener(popupTypeAddCard,popupTypeAddCardForms,config.errorStr,submitButtonTypeAddCards,config.invalidSubmitButtonClass);
-    setEventListener(popupTypeProfile,popupTypeProfileForms,config.errorStr,submitButtonTypeProfile,config.invalidSubmitButtonClass);
+    setEventListener(popupTypeAddCard,popupTypeAddCardForms,config.errorStr,submitButtonTypeAddCards,config.invalidSubmitButtonClass,config.popupInputInvalidClass);
+    setEventListener(popupTypeProfile,popupTypeProfileForms,config.errorStr,submitButtonTypeProfile,config.invalidSubmitButtonClass,config.popupInputInvalidClass);
 }
 enableValidation({
     popupAddCardSelector:".popup_type_add-cards",
@@ -66,5 +68,6 @@ enableValidation({
     errorStr:".popup__input-error_type_",
     submitButonSelector:".popup__saved",
     invalidSubmitButtonClass:"popup__saved-invalid",
+    popupInputInvalidClass:"popup__input-invalid"
 
 });
