@@ -1,18 +1,21 @@
-function showInputError(errorTextElement,validationMessage){
+const showInputError=(errorTextElement,validationMessage,popupInputErrorClass)=>{
     errorTextElement.textContent=validationMessage;
+    errorTextElement.classList.add(popupInputErrorClass);
+
 }
-function hideInputError(errorTextElement){
-    errorTextElement.textContent='';
+const hideInputError=(errorTextElement,popupInputErrorClass)=>{
+    errorTextElement.classList.remove(popupInputErrorClass);
+    errorTextElement.textContent="";
 }
-function checkInpuValidation(input,errorStr,popupInputInvalidClass){
+const checkInpuValidation=(input,errorStr,popupInputInvalidClass,popupInputErrorClass)=>{
     const errorMessage=document.querySelector(`${errorStr}${input.id}`);
     if(input.validity.valid){
-        hideInputError(errorMessage);
+        hideInputError(errorMessage,popupInputErrorClass);
         input.classList.remove(popupInputInvalidClass)
     }
     else{
         input.classList.add(popupInputInvalidClass)
-        showInputError(errorMessage, input.validationMessage,popupInputInvalidClass);
+        showInputError(errorMessage, input.validationMessage,popupInputErrorClass);
     }
 }
 
@@ -40,13 +43,13 @@ const toggleButtonState=(submitButton,invalidSubmitButtonClass,popupTypeAddCardF
     }
 }
 
-function setEventListener(popupTypeAddCard,popupTypeAddCardForms,errorStr,submitButton,invalidSubmitButtonClass,popupInputInvalidClass){
+function setEventListener(popupTypeAddCard,popupTypeAddCardForms,errorStr,submitButton,invalidSubmitButtonClass,popupInputInvalidClass,popupInputErrorClass){
     popupTypeAddCard.addEventListener("submit",(evt)=>{
         evt.preventDefault();
     });
     popupTypeAddCardForms.forEach((input)=>{
         input.addEventListener("input",(evt)=>{
-            checkInpuValidation(input,errorStr,popupInputInvalidClass);
+            checkInpuValidation(input,errorStr,popupInputInvalidClass,popupInputErrorClass);
             toggleButtonState(submitButton,invalidSubmitButtonClass,popupTypeAddCardForms);
         })
     })
@@ -58,8 +61,8 @@ function enableValidation(config){
     const popupTypeProfileForms=popupTypeProfile.querySelectorAll(config.inputSelector);
     const submitButtonTypeAddCards=popupTypeAddCard.querySelector(config.submitButonSelector);
     const submitButtonTypeProfile=popupTypeProfile.querySelector(config.submitButonSelector);
-    setEventListener(popupTypeAddCard,popupTypeAddCardForms,config.errorStr,submitButtonTypeAddCards,config.invalidSubmitButtonClass,config.popupInputInvalidClass);
-    setEventListener(popupTypeProfile,popupTypeProfileForms,config.errorStr,submitButtonTypeProfile,config.invalidSubmitButtonClass,config.popupInputInvalidClass);
+    setEventListener(popupTypeAddCard,popupTypeAddCardForms,config.errorStr,submitButtonTypeAddCards,config.invalidSubmitButtonClass,config.popupInputInvalidClass,config.popupInputErrorClass);
+    setEventListener(popupTypeProfile,popupTypeProfileForms,config.errorStr,submitButtonTypeProfile,config.invalidSubmitButtonClass,config.popupInputInvalidClass,config.popupInputErrorClass);
 }
 enableValidation({
     popupAddCardSelector:".popup_type_add-cards",
@@ -67,7 +70,7 @@ enableValidation({
     inputSelector:".popup__input",
     errorStr:".popup__input-error_type_",
     submitButonSelector:".popup__saved",
+    popupInputErrorClass:"popup__input-error",
     invalidSubmitButtonClass:"popup__saved-invalid",
-    popupInputInvalidClass:"popup__input-invalid"
-
+    popupInputInvalidClass:"popup__input-invalid",
 });
