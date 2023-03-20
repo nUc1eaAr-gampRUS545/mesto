@@ -68,7 +68,7 @@ enableValidation({
     popupAddCardSelector:".popup_type_add-cards",
     popupProfileSelector:".popup_type_profile",
     inputSelector:".popup__input",
-    errorStr:".popup__message_type_",
+    errorStr:".popup__message__",
     submitButonSelector:".popup__saved",
     popupInputErrorClass:"popup__input-error",
     invalidSubmitButtonClass:"popup__saved-invalid",

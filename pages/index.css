@@ -39,10 +39,10 @@
 @import url(../blocks/popup/__input/-error/popup__input-error.css);
 @import url(../blocks/popup/__saved/-invalid/popup__saved-invalid.css);
 @import url(../blocks/popup/__input/-invalid/popup__input-invalid.css);
-@import url(../blocks/popup/__message/_type/popup__message_type_job.css);
-@import url(../blocks/popup/__message/_type/popup__message_type_name.css);
-@import url(../blocks/popup/__message/_type/popup__message_type_text.css);
-@import url(../blocks/popup/__message/_type/popup__message_type_url.css);
+@import url(../blocks/popup/__message/__job/popup__message__job.css);
+@import url(../blocks/popup/__message/__name/popup__message__name.css);
+@import url(../blocks/popup/__message/__text/popup__message__text.css);
+@import url(../blocks/popup/__message/__url/popup__message__url.css);
 
 
 
