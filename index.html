@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
     <link rel="stylesheet" href="./pages/index.css" />
-    <script src="./script/index.js" defer></script>
-    <script src="./script/validation.js" defer></script>
+    
+    
   </head>
   <body class="page">
     <header class="header">
@@ -56,7 +56,7 @@
       <div class="popup__container popup__container_type_profile">
         <button type="button" class="popup__exit" >
         </button>
-        <form class="popup__content">
+        <form class="popup__content popup__content_type_profile">
           <h2 class="popup__title popup__title_type_profile">Редактировать профиль</h2>
           <label class="popup__form">
           <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="40" id="name" type="text" placeholder="Имя"/>
@@ -98,5 +98,6 @@
         <h2 class="popup__caption"></h2>
       </div>
     </div>
+    <script type="module" src="./script/index.js"></script>
   </body>
 </html>

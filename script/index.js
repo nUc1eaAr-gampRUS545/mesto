@@ -1,3 +1,6 @@
+import { Card } from './Card.js';
+import { FormValidation } from './FormValidation.js';
+
 const popups = Array.from(document.querySelectorAll(".popup"));
 const popupExitButtons = document.querySelectorAll(".popup__exit");
 const profilePopup = document.querySelector(".popup_type_profile");
@@ -11,7 +14,6 @@ const jobInput = document.querySelector("#job");
 
 const elements = document.querySelector(".elements");
 
-const templateBlock=document.querySelector(".copy__card")
 const zoomImg = document.querySelector(".popup__image"); //обращаемся и записываем в переменную фотографию из пупапа
 const popupTitleZoomImage = document.querySelector(".popup__caption"); //обращаемся и записываем в переменную подпись под картинкой пупапа
 const popupTypeImage = document.querySelector(".popup_type_image");
@@ -25,6 +27,8 @@ const buttonSavedAddCard = document.querySelector(".popup__saved_type_add-cards"
 const saveAddCard = document.querySelector(".popup_type_add-cards"); //обращаемся и записываем в переменную блока форм
 const nameInputTypeAddCards= document.querySelector("#text"); //считывание информации с формы в переменную
 const imageInputTypeAddCards = document.querySelector("#url"); //считывание информации с формы в переменную
+
+
 popupExitButtons.forEach(function(button){
   const del=button.closest(".popup");
   button.addEventListener("click",function(){
@@ -39,6 +43,7 @@ popups.forEach(function(popup){
     }
   });
 });
+
 
 
 function closeByEscape(evt) {
@@ -91,61 +96,25 @@ const cards = [
     name: "Kabardinka",
     image: "./images/card/olga-nayda-5w8we0Nw8CU-unsplash.jpg",
   },
-  { name: "Elbrus", image: "./images/card/Elbrus.jpg" },
-];
+  { name: "Elbrus", image: "./images/card/Elbrus.jpg" }, ];
 
-//функция создания карточек
-function createCard(card) {
-  const newCard = templateBlock.content.cloneNode(true); //копируем template заготовку
-  const cardImage = newCard.querySelector(".card__photography"); //обращаемся и записываем в переменную фотографию из карточки
-  const like = newCard.querySelector(".card__button"); //обращаемся и записываем в переменную кнопку лайка из карточки
-  const bascket = newCard.querySelector(".card__bascket"); //обращаемся и записываем в переменную кнопку "корзина" из карточки
+
+function addInitialPlaces(item) {
+  const card = new Card(item,".copy__card");
   
-  cardImage.addEventListener("click",enlargeImage); //навешиваем слушателя на фотографию из карточки
-  like.addEventListener("click",activateLike); //навешиваем слушателя на кнопку лайка
-  bascket.addEventListener("click", deleteCard); //навешиваем слушателя на кнопку корзины
-
-  cardImage.setAttribute("src", card.image); //присваиваем атрибут src в переменную cardImage аргумент из массива под ключом image
-  newCard.querySelector(".card__photography").setAttribute("alt", card.name); //присваиваем атрибут alt в переменную cardImage аргумент из массива под ключом name
-  newCard.querySelector(".card__title").textContent = card.name; //перезаписываем  card__title значение аргумента саrd из массива под ключом name
-  return newCard;
-}
-function addInitialPlaces(place) {
-  const placeTemplateCopy = createCard(place);//передаем в переменную созданную картинку
+  const placeTemplateCopy= card.generateCard();//передаем в переменную созданную картинку
   elements.prepend(placeTemplateCopy);//закидываем в DOM созданную картинку
 }
-cards.forEach(addInitialPlaces);//проделываем эту функцию с каждым объектом коллекции cards
-
-//функция  активации кнопки лайка
-function activateLike(evt) {
-  const unlike = evt.target; //определяем какую именно кнопку мы нажимаем на странице
-  unlike.classList.toggle("card__button_active"); //при нажатии на кнопку удаляем нынешний класс, и добавляем новый, при повторном нажатии возращаем предыдуший класс, удалив нынешний
-}
-
-//функция удаления карточек
-function deleteCard(evt) {
-  const bascket = evt.target; //определяем, на какую именно корзину мы нажали
-  const deleteCard = bascket.closest(".card"); //определяем ближайшее значение со значением ".card"
-  deleteCard.remove(); //удаляем эту карточку
-}
-
-
-
-
-//открываем пупап тип-изображение
-function enlargeImage(evt) {
-  zoomImg.src = evt.target.src; //передаем url фотографии пупапа из нажатой фотографии из карточки
-  zoomImg.alt = evt.target.alt; //передаем alt фотографии пупапа из нажатой фотографии из карточки
-  popupTitleZoomImage.textContent = evt.target.alt; //передаем в переменную подпись значение атрибута alt  пупапа из нажатой фотографии из карточки
-  openPopup(popupTypeImage); //добавляем пупапу модификатор, открывающий его настранице
-}
-
-
-
+cards.forEach((i)=>{
+  addInitialPlaces(i);
+});//проделываем эту функцию с каждым объектом коллекции cards
 
 //пупап для добовления карточек
 buttonPopupAddCard.addEventListener("click", function () {
-  openPopup(popupTypeAddCards);}); //навешиваем слушателя на кнопку добавления карточек и при нажатии открываем пупап для добовления карточек
+  openPopup(popupTypeAddCards);
+  const FormValidation1=new FormValidation(data);
+FormValidation1.enableValidation();
+}); //навешиваем слушателя на кнопку добавления карточек и при нажатии открываем пупап для добовления карточек
 
 saveAddCard.addEventListener("submit", handleSubmitcard); ////навешиваем слушателя на кнопку сохранить
 
@@ -161,3 +130,22 @@ function handleSubmitcard(evt) {
     buttonSavedAddCard.classList.add('popup__saved-invalid');
     buttonSavedAddCard.disabled=true;
 }
+
+const data=
+  {
+  inputSelector:".popup__input",
+  errorStr:".popup__message-error_",
+  submitButonSelector:".popup__saved",
+  popupInputErrorClass:"popup__input-error",
+  invalidSubmitButtonClass:"popup__saved-invalid",
+  popupInputInvalidClass:"popup__input-invalid"};
+  
+  const ValidationFormTypeAddCard = new FormValidation(data,".popup__content_type_add-cards");
+  const ValidationFormTypeProfile = new FormValidation(data,".popup__content_type_profile");
+  ValidationFormTypeAddCard.enableValidation();
+  ValidationFormTypeProfile.enableValidation();
+
+  
+  
+
+ 
