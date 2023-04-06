@@ -18,6 +18,8 @@ const zoomImg = document.querySelector(".popup__image"); //обращаемся 
 const popupTitleZoomImage = document.querySelector(".popup__caption"); //обращаемся и записываем в переменную подпись под картинкой пупапа
 const popupTypeImage = document.querySelector(".popup_type_image");
 
+export {zoomImg,popupTitleZoomImage,popupTypeImage};
+
 const popupTypeAddCards = document.querySelector(".popup_type_add-cards");
 const buttonPopupAddCard = document.querySelector(".profile__button");
 
@@ -28,6 +30,14 @@ const saveAddCard = document.querySelector(".popup_type_add-cards"); //обра�
 const nameInputTypeAddCards= document.querySelector("#text"); //считывание информации с формы в переменную
 const imageInputTypeAddCards = document.querySelector("#url"); //считывание информации с формы в переменную
 
+
+function handleCardClick(name,link){
+    openPopup(popupTypeImage);
+    zoomImg.src = link; 
+    zoomImg.alt = name;
+    popupTitleZoomImage.textContent = name;
+      closeByEscape;
+}
 
 popupExitButtons.forEach(function(button){
   const del=button.closest(".popup");
@@ -53,7 +63,7 @@ function closeByEscape(evt) {
     
   }
 }
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown",closeByEscape);
 };
@@ -98,22 +108,20 @@ const cards = [
   },
   { name: "Elbrus", image: "./images/card/Elbrus.jpg" }, ];
 
-
-function addInitialPlaces(item) {
-  const card = new Card(item,".copy__card");
-  
-  const placeTemplateCopy= card.generateCard();//передаем в переменную созданную картинку
-  elements.prepend(placeTemplateCopy);//закидываем в DOM созданную картинку
+function createCard(item) {
+  const card = new Card(item,".copy__card",handleCardClick);
+  const placeTemplateCopy = card.generateCard();
+  return placeTemplateCopy 
 }
+
 cards.forEach((i)=>{
-  addInitialPlaces(i);
+  elements.append(createCard(i));
 });//проделываем эту функцию с каждым объектом коллекции cards
 
 //пупап для добовления карточек
 buttonPopupAddCard.addEventListener("click", function () {
   openPopup(popupTypeAddCards);
-  const FormValidation1=new FormValidation(data);
-FormValidation1.enableValidation();
+ 
 }); //навешиваем слушателя на кнопку добавления карточек и при нажатии открываем пупап для добовления карточек
 
 saveAddCard.addEventListener("submit", handleSubmitcard); ////навешиваем слушателя на кнопку сохранить
@@ -124,11 +132,11 @@ function handleSubmitcard(evt) {
   const newImage=imageInputTypeAddCards.value;
   evt.preventDefault(); //отмена отправки сохранения сайта
     const newCard = { image: newImage, name: newName }; //создание объекта с информацией из формы
-    addInitialPlaces(newCard); //вызов функции с новым объектом в аргументе
+    elements.prepend(createCard(newCard)); //вызов функции с новым объектом в аргументе
     closePopup(popupTypeAddCards); //вызов функции закрытия формы
     evt.target.reset();
     buttonSavedAddCard.classList.add('popup__saved-invalid');
-    buttonSavedAddCard.disabled=true;
+    //buttonSavedAddCard.disabled=true;
 }
 
 const data=
@@ -141,8 +149,8 @@ const data=
   popupInputInvalidClass:"popup__input-invalid"};
   
   const ValidationFormTypeAddCard = new FormValidation(data,".popup__content_type_add-cards");
-  const ValidationFormTypeProfile = new FormValidation(data,".popup__content_type_profile");
   ValidationFormTypeAddCard.enableValidation();
+  const ValidationFormTypeProfile = new FormValidation(data,".popup__content_type_profile");
   ValidationFormTypeProfile.enableValidation();
 
   

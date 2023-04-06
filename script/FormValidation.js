@@ -1,6 +1,6 @@
 export class FormValidation {
         #form;
-        #input;
+        #inputForms;
         #popupInputInvalidClass;
         #invalidSubmitButtonClass;
         #popupInputErrorClass;
@@ -10,7 +10,7 @@ export class FormValidation {
         
         constructor(data,form) {
         this.#form=document.querySelector(form);
-        this.#input=Array.from(this.#form.querySelectorAll(data.inputSelector));
+        this.#inputForms=Array.from(this.#form.querySelectorAll(data.inputSelector));
         this.#errorStr=data.errorStr;
         this.#popupInputErrorClass=data.popupInputErrorClass;
         this.#invalidSubmitButtonClass=data.invalidSubmitButtonClass;
@@ -25,7 +25,8 @@ export class FormValidation {
         this.#form.addEventListener("submit",(evt)=>{
                 evt.preventDefault();
             });
-            this.#input.forEach((item)=>{
+            this.#inputForms.forEach((item)=>{
+                item.textContent="";
                 item.addEventListener("input",(evt)=>{
                     this._checkInpuValidation(item);
                     if(!this._hasInvalidInput()){
@@ -53,7 +54,7 @@ export class FormValidation {
       }
       
       _hasInvalidInput(){
-        return this.#input.some((i)=>{
+        return this.#inputForms.some((i)=>{
             return !i.validity.valid;
         })
       }

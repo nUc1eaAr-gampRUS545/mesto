@@ -1,4 +1,4 @@
-
+import {openPopup,zoomImg,popupTitleZoomImage,popupTypeImage} from "./index.js"
 export class Card {
     #templateSelector;
     #name;
@@ -7,10 +7,19 @@ export class Card {
     #cardImage;
     #cardLikeButton;
     #cardBascketButton;
-    constructor(cards,templateSelector){
+    #zoomImg;
+    #popupTitleZoomImage;
+    #popupTypeImage;
+
+   
+    constructor(cards,templateSelector, handleCardClick){
         this.#templateSelector=templateSelector;
         this.#name=cards.name;
         this.#image=cards.image;
+        this.#zoomImg=zoomImg;
+        this.#popupTitleZoomImage=popupTitleZoomImage;
+        this.#popupTypeImage=popupTypeImage;
+        this._handleCardClick=handleCardClick;
     }
     _getTemplate(){
         const newCard = document.querySelector(this.#templateSelector).content.cloneNode(true);
@@ -28,21 +37,23 @@ export class Card {
         deleteCard.remove(); 
       } 
 
-    _enlargeImage(evt) {
-        this.zoomImg = document.querySelector(".popup__image");
-        this.popupTitleZoomImage = document.querySelector(".popup__caption"); //обращаемся и записываем в переменную подпись под картинкой пупапа
-        this.popupTypeImage = document.querySelector(".popup_type_image"); 
-        this.zoomImg.src = evt.target.src; 
-        this.zoomImg.alt = evt.target.alt; 
-        this.popupTitleZoomImage.textContent = evt.target.alt; 
-        this.popupTypeImage.classList.add("popup_opened"); }
+    /*_enlargeImage(image,title) {
+      openPopup(popupTypeImage);
+        image.src = this.#image; 
+        image.alt = this.#name; 
+        title.textContent = this.#name; 
+         }*/
 
     _setAttribute(){
+       
         this.#cardLikeButton = this.#element.querySelector(".card__button"); 
         this.#cardBascketButton = this.#element.querySelector(".card__bascket");
-        this.#cardImage.addEventListener("click",this._enlargeImage); 
+        this.#cardImage.addEventListener("click",()=>{
+          this._handleCardClick(this.#name,this.#image)
+        }); 
         this.#cardLikeButton.addEventListener("click",this._activateLike); 
         this.#cardBascketButton.addEventListener("click",this._deleteCard); 
+    
 
     }
     generateCard(){
@@ -51,6 +62,7 @@ export class Card {
         this.#cardImage.setAttribute("src", this.#image);
         this.#cardImage.setAttribute("alt", this.#name); 
         this._setAttribute()
+        
         this.#element.querySelector(".card__title").textContent = this.#name; 
         return this.#element;
     }
