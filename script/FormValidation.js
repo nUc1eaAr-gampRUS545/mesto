@@ -24,6 +24,8 @@ export class FormValidation {
       _setEventListener(){
         this.#form.addEventListener("submit",(evt)=>{
                 evt.preventDefault();
+                this.#submitButton.classList.add(this.#invalidSubmitButtonClass);
+                this.#submitButton.disabled=true;
             });
             this.#inputForms.forEach((item)=>{
                 item.textContent="";

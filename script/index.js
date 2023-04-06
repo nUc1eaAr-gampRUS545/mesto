@@ -135,8 +135,7 @@ function handleSubmitcard(evt) {
     elements.prepend(createCard(newCard)); //вызов функции с новым объектом в аргументе
     closePopup(popupTypeAddCards); //вызов функции закрытия формы
     evt.target.reset();
-    buttonSavedAddCard.classList.add('popup__saved-invalid');
-    //buttonSavedAddCard.disabled=true;
+  
 }
 
 const data=
