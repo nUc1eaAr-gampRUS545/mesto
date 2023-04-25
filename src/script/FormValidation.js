@@ -1,4 +1,4 @@
-export class FormValidation {
+export default class FormValidation {
         #form;
         #inputForms;
         #popupInputInvalidClass;
@@ -28,8 +28,7 @@ export class FormValidation {
                 this.#submitButton.disabled=true;
             });
             this.#inputForms.forEach((item)=>{
-                item.textContent="";
-                item.addEventListener("input",(evt)=>{
+                item.addEventListener("input",()=>{
                     this._checkInpuValidation(item);
                     if(!this._hasInvalidInput()){
                         this.#submitButton.classList.remove(this.#invalidSubmitButtonClass);

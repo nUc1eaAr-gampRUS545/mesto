@@ -1,5 +1,5 @@
-import {openPopup,zoomImg,popupTitleZoomImage,popupTypeImage} from "./index.js"
-export class Card {
+
+export default class Card {
     #templateSelector;
     #name;
     #image;
@@ -7,19 +7,14 @@ export class Card {
     #cardImage;
     #cardLikeButton;
     #cardBascketButton;
-    #zoomImg;
-    #popupTitleZoomImage;
-    #popupTypeImage;
+    
 
    
-    constructor(cards,templateSelector, handleCardClick){
+    constructor({cards,renderer},templateSelector,){
         this.#templateSelector=templateSelector;
         this.#name=cards.name;
         this.#image=cards.image;
-        this.#zoomImg=zoomImg;
-        this.#popupTitleZoomImage=popupTitleZoomImage;
-        this.#popupTypeImage=popupTypeImage;
-        this._handleCardClick=handleCardClick;
+        this._renderer=renderer;
     }
     _getTemplate(){
         const newCard = document.querySelector(this.#templateSelector).content.cloneNode(true);
@@ -37,19 +32,13 @@ export class Card {
         deleteCard.remove(); 
       } 
 
-    /*_enlargeImage(image,title) {
-      openPopup(popupTypeImage);
-        image.src = this.#image; 
-        image.alt = this.#name; 
-        title.textContent = this.#name; 
-         }*/
-
     _setAttribute(){
        
         this.#cardLikeButton = this.#element.querySelector(".card__button"); 
         this.#cardBascketButton = this.#element.querySelector(".card__bascket");
         this.#cardImage.addEventListener("click",()=>{
-          this._handleCardClick(this.#name,this.#image)
+          this._renderer();
+          
         }); 
         this.#cardLikeButton.addEventListener("click",this._activateLike); 
         this.#cardBascketButton.addEventListener("click",this._deleteCard); 

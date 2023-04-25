@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
     
     
   </head>
@@ -15,11 +14,12 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img
+         <img
           class="profile__avatar"
-          src="./images/profile/icon.jpg"
+          src="<%=require('./images/profile/icon.jpg')%>"
           alt="Иконка"
         />
+       
         <div class="profile__info">
           <div class="profile__info-block">
             <h1 class="profile__name">Жак&ndash;Ив Кусто</h1>
@@ -28,7 +28,8 @@
           <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__button" type="button">
-          <img class="profile__add-button" src="./images/profile/addBotton.svg" alt="кнопка 'Добавить'">
+          <img class="profile__add-button" src="<%=require('./images/profile/addBotton.svg')%>" alt="кнопка 'Добавить'">
+         
         </button>
       </section>
       <div class="elements">
@@ -80,10 +81,10 @@
         <form class="popup__content popup__content_type_add-cards">
           <h2 class="popup__title popup__title_type_add-cards">Новое место</h2>
           <label class="popup__form">
-          <input class="popup__input popup__input_type_add-cards" id="text" minlength="2" required  maxlength="40" type="text" placeholder="Название"/>
+          <input class="popup__input popup__input_type_add-cards" id="text" name="name" minlength="2" required  maxlength="40" type="text" placeholder="Название"/>
           <span class="popup__message-error popup__message-error_text"></span></label>
           <label class="popup__form">
-          <input id="url" class="popup__input popup__input_type_add-cards" required  type="url" placeholder="Ссылка на картинку"/>
+          <input id="url" class="popup__input popup__input_type_add-cards" required name="image" type="url" placeholder="Ссылка на картинку"/>
           <span class="popup__message-error popup__message-error_url"></span></label>
           <button type="submit" class="popup__saved-invalid popup__saved popup__saved_type_add-cards" disabled>
             Создать</button>
@@ -98,6 +99,6 @@
         <h2 class="popup__caption"></h2>
       </div>
     </div>
-    <script type="module" src="./script/index.js"></script>
+    
   </body>
 </html>
