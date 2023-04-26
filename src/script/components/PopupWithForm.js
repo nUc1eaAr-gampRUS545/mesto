@@ -1,14 +1,12 @@
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup{
     #inputList;
-    #popupElement;
     #renderer;
     #form;
     constructor({renderer,popupSelector}){
         super(popupSelector);
         this.#renderer=renderer;
-        this.#popupElement=document.querySelector(popupSelector);
-        this.#form=this.#popupElement.querySelector(".popup__content")
+        this.#form=this.popupElement.querySelector(".popup__content")
         this.#inputList=Array.from(this.popupElement.querySelectorAll(".popup__input"));
     }
     _getInputValues(){
@@ -19,18 +17,18 @@ export default class PopupWithForm extends Popup{
         return this.newCard;
     }
     close(){
-        this.#popupElement.classList.remove("popup_opened");
-        document.removeEventListener("keydown",this._handleEscClose);
+       super.close();
+       this.#form.reset();
     }
     setEventListeners(){
+        super.setEventListeners();
         this.#form.addEventListener("submit",(evt)=>{
-            const values=this._getInputValues();
             evt.preventDefault();
-            evt.target.reset();
-            this.#renderer(values); 
+            this.#renderer(this._getInputValues()); 
             this.close();
         })
-        super.setEventListeners();
+        
+        
     }
     
 
