@@ -1,10 +1,8 @@
 export default class Popup{
-    #buttonPopupAddCard;
     #popupExitButton;
     #popupElement;
     constructor(popupSelector){
         this.#popupElement=document.querySelector(popupSelector);
-        this.#buttonPopupAddCard=document.querySelector(".profile__button");
         this.#popupExitButton = this.#popupElement.querySelector(".popup__exit");
         this._handleEscClose=this._handleEscClose.bind(this);
        
