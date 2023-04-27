@@ -3,13 +3,12 @@ export default class PopupWithForm extends Popup{
     #inputList;
     #renderer;
     #form;
-    #popupElement;
+
     constructor({renderer,popupSelector}){
         super(popupSelector);
-        this.#popupElement=document.querySelector(popupSelector);
         this.#renderer=renderer;
-        this.#form=this.#popupElement.querySelector(".popup__content")
-        this.#inputList=Array.from(this.#popupElement.querySelectorAll(".popup__input"));
+        this.#form=this.popupElement.querySelector(".popup__content")
+        this.#inputList=Array.from(this.popupElement.querySelectorAll(".popup__input"));
     }
     _getInputValues(){
         this.newCard={}

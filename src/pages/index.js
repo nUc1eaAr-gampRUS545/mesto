@@ -26,15 +26,15 @@ const section = new Section({
 
 section.renderItems();    
 
-const PopupForm=new PopupWithForm({renderer:(cards)=>{
+const popupForm=new PopupWithForm({renderer:(cards)=>{
   section.addItem(createCard(cards))
-  PopupForm.close();
+  popupForm.close();
 },
   popupSelector:".popup_type_add-cards"});
 openButtonTypeAddCards.addEventListener("click",()=>{
-  PopupForm.open();
+  popupForm.open();
 })
-PopupForm.setEventListeners();
+popupForm.setEventListeners();
 
 //работа с поп ап тайп профиль 
 const userInfo = new UserInfo(".profile__name", ".profile__job");
