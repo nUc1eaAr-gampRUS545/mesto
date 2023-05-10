@@ -1,19 +1,18 @@
 export default class UserInfo{
-    #nameInput;
-    #jobInput;
-    #getJob;
-    #getName;
 
-    constructor(getName,getJob){
-        /*this.#nameInput = document.querySelector("#name");
-        this.#jobInput = document.querySelector("#job");*/
+
+    constructor(getName,getJob,avatar){
         this.getName=document.querySelector(getName);
-        this.getJob=document.querySelector(getJob);  
+        this.getJob=document.querySelector(getJob);
+        this.avatar=document.querySelector(avatar)  
     }
     setUserInfo(data){
-      console.log(data);
-      this.getName.textContent=data.userName,
-      this.getJob.textContent=data.userJob}
+      this.getName.textContent=data.name,
+      this.getJob.textContent=data.about,
+      this.avatar.src=data.avatar;
+      this.userID=data._id;
+
+    }
     
     getUserInfo(){
       const userInfo = {
@@ -21,6 +20,9 @@ export default class UserInfo{
         job: this.getJob.textContent,
       }
       return userInfo;
+    }
+    getUserId(){
+      return this.userID;
     }
   }
 /*function handleFormSubmit(evt) {

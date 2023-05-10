@@ -14,18 +14,15 @@
     </header>
     <main class="content">
       <section class="profile">
-         <img
-          class="profile__avatar"
-          src="<%=require('./images/profile/icon.jpg')%>"
-          alt="Иконка"
-        >
+        <button type="button" class="profile__avatar-button">
+         <img class="profile__avatar" src="" alt="Иконка"></button>
        
         <div class="profile__info">
           <div class="profile__info-block">
-            <h1 class="profile__name">Жак&ndash;Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button class="profile__edit-button" type="button"></button>
           </div>
-          <p class="profile__job">Исследователь океана</p>
+          <p class="profile__job"></p>
         </div>
         <button class="profile__button" type="button">
           <img class="profile__add-button" src="<%=require('./images/profile/addBotton.svg')%>" alt="кнопка 'Добавить'">
@@ -35,14 +32,13 @@
       <div class="elements">
         <template class="copy__card">
         <article class="card">
-          <img
-            class="card__photography"
-            src="#"
-            alt=""
-          />
+          <img class="card__photography" src="#" alt=""/>
           <div class="card__info">
             <h2 class="card__title"></h2>
+            <div class="card__group">
             <button class="card__button" type="button"></button>
+            <h3 class="card__likes" id="countLikes"></h3>
+          </div>
           </div>
           <button class="card__bascket"></button>
         </article>
@@ -63,7 +59,7 @@
           <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="40" id="name" name="name" type="text" placeholder="Имя"/>
           <span class="popup__message-error popup__message-error_name"></span></label>
           <label class="popup__form">
-          <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="200" id="job" name="" type="text" placeholder="Работа"/>
+          <input class="popup__input popup__input_type_profile" minlength="2" required  maxlength="200" id="job" name="job" type="text" placeholder="Работа"/>
           <span class="popup__message-error popup__message-error_job"></span></label>
           <button
             type="submit"
@@ -84,13 +80,54 @@
           <input class="popup__input popup__input_type_add-cards" id="text" name="name" minlength="2" required  maxlength="40" type="text" placeholder="Название"/>
           <span class="popup__message-error popup__message-error_text"></span></label>
           <label class="popup__form">
-          <input id="url" class="popup__input popup__input_type_add-cards" required name="image" type="url" placeholder="Ссылка на картинку"/>
+          <input id="url" class="popup__input popup__input_type_add-cards" required name="link" type="url" placeholder="Ссылка на картинку"/>
           <span class="popup__message-error popup__message-error_url"></span></label>
           <button type="submit" class="popup__saved-invalid popup__saved popup__saved_type_add-cards" disabled>
             Создать</button>
         </form>
       </div>
     </div>
+
+
+
+    <div class="popup popup_delete-card">
+      <div class="popup__container popup__container_delete-card">
+        <button type="button" class="popup__exit" >
+        </button>
+        <form class="popup__content popup__content_delete-card">
+          <h2 class="popup__title popup__title_delete-card">Вы уверены?</h2>
+          <button
+            type="submit"
+            class="popup__saved  popup__saved_delete-card">
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+    <div class="popup popup_type_profile-change">
+      <div class="popup__container popup__container_type_profile-change">
+        <button type="button" class="popup__exit popup__exit_type__profile-change" >
+        </button>
+        <form class="popup__content popup__content_type_profile-change">
+          <h2 class="popup__title popup__title_type_profile-change">Обновить аватар</h2>
+          <label class="popup__form">
+          <input class="popup__input popup__input_type_profile-change" id="text" name="avatar" minlength="2" type="url" placeholder="Ссылка"/>
+          <span class="popup__message-error popup__message-error_text"></span></label>
+          <button type="submit" class="popup__saved popup__saved_type_profile-change" >
+            Создать</button>
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
 
     <div class="popup popup_type_image">
       <div class="popup__container popup__container_type_image" >

@@ -1,3 +1,4 @@
+
 import Popup from "./Popup.js";
 export default class PopupWithForm extends Popup{
     #inputList;
@@ -14,6 +15,7 @@ export default class PopupWithForm extends Popup{
         this.newCard={}
         this.#inputList.forEach((element) => {
             this.newCard[element.name]=element.value;
+            
         });
         return this.newCard;
     }
@@ -22,11 +24,13 @@ export default class PopupWithForm extends Popup{
        this.#form.reset();
     }
     setEventListeners(){
-        super.setEventListeners();
+        super.setEventListeners();       
         this.#form.addEventListener("submit",(evt)=>{
             evt.preventDefault();
-            this.#renderer(this._getInputValues()); 
-            this.close();
+            const replaceTextSubmit=evt.submitter.textContent
+            evt.submitter.textContent="Сохранение..."
+            this.#renderer(this._getInputValues(),evt).then(()=>{this.close()}).catch((res)=>{console.error(res)}).finally(()=>{evt.submitter.textContent=replaceTextSubmit}) 
+            
         })
         
         
