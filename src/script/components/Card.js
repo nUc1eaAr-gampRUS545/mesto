@@ -1,4 +1,3 @@
-import { event } from "jquery";
 
 export default class Card {
   #templateSelector;
@@ -15,14 +14,14 @@ export default class Card {
   #cardID;
   #cards;
   constructor(
-    { cards, userId, renderer, handleLikeButton, handleDeleteCard,checkLike },
-    templateSelector
+    { cards, userId, renderer, handleLikeButton, handleDeleteCard,
+    templateSelector}
   ) {
     this.#templateSelector = templateSelector;
     this.#name = cards.name;
     this.#cards = cards;
     this.#cardID = cards._id;
-    this.#cardUserID = cards.owner;
+    this.#cardUserID = cards.owner._id;
     this.#userID = userId;
     this.#image = cards.link;
     this.#cardLikes = cards.likes;
@@ -31,7 +30,7 @@ export default class Card {
     this._handleDeleteCard = handleDeleteCard;
     this.#element = this._getTemplate();
     this.#likesCounter = this.#element.querySelector("#countLikes"); 
-    this._checkLike=checkLike;
+   
   }
   _getTemplate() {
     const newCard = document
@@ -51,35 +50,37 @@ export default class Card {
     this.#cardImage.addEventListener("click", () => {
       this._renderer();
     });
-    this._toggleLikes();
+    
     this.#cardLikeButton.addEventListener("click", () => {
       this._handleLikeButton(this.#cards);
     });
+    
     this.#cardBascketButton.addEventListener("click", (evt) => {
       this._handleDeleteCard(evt);
       document.querySelector(".popup_delete-card").classList.add("popup_opened");
     });
   }
  
-  _toggleLikes() {
-    if (this._checkLike()) {
-      this.activeLike();
-    } 
-    else {
-      this.unActktiveLike();
-    }
-  }
+ _checkLike(){
+  if (this.#cards.likes.some(elem =>  this.#userID === elem._id)) {
+    this.activeLike()
+   }
+   else{
+    this.unActiveLike()
+   }}
   
   activeLike() {
     this.isLaked=true;
     this.#cardLikeButton.classList.add("card__button_active");
   }
-  unActktiveLike() {
+  unActiveLike() {
     this.isLaked=false;
     this.#cardLikeButton.classList.remove("card__button_active");
   }
   _checkBascket() {
-    if (this.#cardUserID._id === this.#userID) {
+    console.log(this.#cardUserID)
+console.log(this.#userID+"   это яяя")
+    if (this.#cardUserID===this.#userID) {
       this.#cardBascketButton.style.display = "block";
     }
   }
@@ -98,6 +99,7 @@ export default class Card {
     this.#cardImage.setAttribute("alt", this.#name);
     this._setAttribute();
     this._checkBascket();
+    this._checkLike()
     this.displayLike(this.#cardLikes);
     this.#element.querySelector(".card__title").textContent = this.#name;
     return this.#element;

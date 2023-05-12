@@ -4,12 +4,14 @@ export default class PopupWithForm extends Popup{
     #inputList;
     #renderer;
     #form;
+    #submitButton;
 
     constructor({renderer,popupSelector}){
         super(popupSelector);
         this.#renderer=renderer;
         this.#form=this.popupElement.querySelector(".popup__content")
         this.#inputList=Array.from(this.popupElement.querySelectorAll(".popup__input"));
+        this.#submitButton=this.popupElement.querySelector('.popup__saved')
     }
     _getInputValues(){
         this.newCard={}
@@ -27,14 +29,16 @@ export default class PopupWithForm extends Popup{
         super.setEventListeners();       
         this.#form.addEventListener("submit",(evt)=>{
             evt.preventDefault();
-            const replaceTextSubmit=evt.submitter.textContent
-            evt.submitter.textContent="Сохранение..."
-            this.#renderer(this._getInputValues(),evt).then(()=>{this.close()}).catch((res)=>{console.error(res)}).finally(()=>{evt.submitter.textContent=replaceTextSubmit}) 
-            
+            this.#renderer(this._getInputValues(),evt)
         })
-        
-        
     }
+    renderLoading(isLoading) {
+        if (isLoading === true) {
+            this.#submitButton.textContent = 'Сохранение...';
+        } else {
+            this.#submitButton.textContent = 'Сохранить';
+        }
+      }
     
 
 }
