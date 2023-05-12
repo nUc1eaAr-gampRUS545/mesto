@@ -12,16 +12,13 @@ import {
   openButtonTypeAddCards,
   data,
   nameInput,
-  jobInput,
+  jobInput,openButtonTypeProfileChange
 } from "../script/utils/constants.js";
 import { Api } from "../script/components/api.js";
 
 const api = new Api({baseURL:`https://mesto.nomoreparties.co/v1/cohort-65`,headers:{
   authorization: "6af0fad8-3b2e-4d49-af39-c98a3c186d35",
   'Content-Type': 'application/json'}});
-
-const openButtonTypeProfileChange = document.querySelector(
-  ".profile__avatar-button");
 
 function getInfoUser() {
     api
@@ -36,7 +33,7 @@ function initialCard(){
   api
   .getInitialCards()
   .then((res) => {
-    section.renderItems(res);
+    section.addItem(createCard(res[0]));
   })
   .catch((err) => console.error(err));
 
@@ -140,7 +137,7 @@ popupDeleteCard.setEventListeners();
 const popupForm = new PopupWithForm({
     renderer: (items) => {
       popupForm.renderLoading(true)
-      api.addMyCards(items.name, items.link).then(initialCard).catch((err)=>{
+      api.addMyCards(items.name, items.link).then(initialCard()).catch((err)=>{
         console.error('Ошибка - '+err)
       }).finally(()=>{
         popupForm.renderLoading(false);
