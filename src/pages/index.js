@@ -50,7 +50,7 @@ const popupFormProfile = new PopupWithForm({
         }).catch((err) => {
           console.error(err);
         }).finally(() => {
-          popupWithProfileForm.renderLoading(false);
+          popupFormProfile.renderLoading(false);
         });
     },
     popupSelector: ".popup_type_profile-change",
