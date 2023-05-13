@@ -13,7 +13,7 @@ export default class Section{
     }
     renderItems(items){
         
-        items.forEach((i)=>{
+        items.reverse().forEach((i)=>{
             this.#renderer(i)
     } )}
 }

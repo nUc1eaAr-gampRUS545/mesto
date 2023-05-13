@@ -24,6 +24,8 @@ export default class PopupWithForm extends Popup{
     close(){
        super.close();
        this.#form.reset();
+       this.#submitButton.disabled=true;
+       this.#submitButton.classList.add("popup__saved-invalid")
     }
     setEventListeners(){
         super.setEventListeners();       

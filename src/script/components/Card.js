@@ -57,7 +57,7 @@ export default class Card {
     
     this.#cardBascketButton.addEventListener("click", (evt) => {
       this._handleDeleteCard(evt);
-      document.querySelector(".popup_delete-card").classList.add("popup_opened");
+      
     });
   }
  
