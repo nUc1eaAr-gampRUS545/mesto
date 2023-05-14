@@ -16,7 +16,7 @@ import {
 } from "../script/utils/constants.js";
 import { Api } from "../script/components/api.js";
 
-let userID;
+var userID;
 
 const api = new Api({baseURL:`https://mesto.nomoreparties.co/v1/cohort-65`,headers:{
   authorization: "6af0fad8-3b2e-4d49-af39-c98a3c186d35",
@@ -50,11 +50,10 @@ const popupFormProfile = new PopupWithForm({
 const popupImage = new PopupWithImage(".popup_type_image");
 popupImage.setEventListeners();
 
-const createCard = (items) => {
+const createCard = (items,user) => {
   const card = new Card(
     { cards: items,
-      userId: 'bc0363b9087060d2af931731',
-      //userId:userID,//так не работает и через userInfo.getUserID() тоже
+     userId:user,
       renderer: () => {
         popupImage.open(items);
       },
@@ -99,8 +98,8 @@ const createCard = (items) => {
 
 const section = new Section(
   {
-    renderer: (items) => {
-      section.addItem(createCard(items));
+    renderer: (items,user) => {
+      section.addItem(createCard(items,user));
     },
   },
   ".elements"
@@ -180,9 +179,9 @@ validationFormTypeChangeAvatar.enableValidation();
 Promise.all([api.getInitialCards(),api.getInfo()])
 
   .then(([cards,userData]) => {
-    section.renderItems(cards);
+    section.renderItems(cards,userData._id);
     userInfo.setUserInfo(userData);
-    //userID=userData._id;
+    
   }) .catch((err) => console.error(err))
 
   const popupWithConfirmation = new PopupWithSubmit(".popup_delete-card");

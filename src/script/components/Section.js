@@ -11,22 +11,8 @@ export default class Section{
     renderItem(el){
         this.#container.append(el);
     }
-    renderItems(items){
-        
+    renderItems(items,user){ 
         items.reverse().forEach((i)=>{
-            this.#renderer(i)
+            this.#renderer(i,user)
     } )}
 }
-/*cards.forEach((i)=>{
-    elements.append(createCard(i));
-  });*/
-
-  /*function createCard(item) {
-    const card = new Card(item,".copy__card",handleCardClick);
-    const placeTemplateCopy = card.generateCard();
-    return placeTemplateCopy 
-  }
-  
-  cards.forEach((i)=>{
-    elements.append(createCard(i));
-  });*/
