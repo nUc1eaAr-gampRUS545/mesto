@@ -63,7 +63,7 @@
           <span class="popup__message-error popup__message-error_job"></span></label>
           <button
             type="submit"
-            class="popup__saved  popup__saved_type_profile" disabled>
+            class="popup__saved  popup__saved_type_profile">
             Сохранить
           </button>
         </form>
@@ -82,7 +82,7 @@
           <label class="popup__form">
           <input id="url" class="popup__input popup__input_type_add-cards" required name="link" type="url" placeholder="Ссылка на картинку"/>
           <span class="popup__message-error popup__message-error_url"></span></label>
-          <button type="submit" class="popup__saved-invalid popup__saved popup__saved_type_add-cards" disabled>
+          <button type="submit" class=" popup__saved popup__saved_type_add-cards" >
             Создать</button>
         </form>
       </div>
@@ -113,10 +113,9 @@
         <form class="popup__content popup__content_type_profile-change">
           <h2 class="popup__title popup__title_type_profile-change">Обновить аватар</h2>
           <label class="popup__form">
-          <input class="popup__input popup__input_type_profile-change" id="avatar" name="avatar" minlength="2" type="url" placeholder="Ссылка"/>
+          <input class="popup__input popup__input_type_profile-change" id="avatar" name="avatar" type="url" required placeholder="Ссылка"/>
           <span class="popup__message-error popup__message-error_avatar"></span></label>
-          <button type="submit" class="popup__saved popup__saved_type_profile-change popup__saved-invalid" disabled>
-            Создать</button>
+          <button type="submit" class="popup__saved popup__saved_type_profile-change"></button>
         </form>
       </div>
     </div>

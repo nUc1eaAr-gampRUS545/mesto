@@ -19,9 +19,11 @@ export default class FormValidation {
         };
       
         enableValidation() {
+            
             this._setEventListener();
       }
       _setEventListener(){
+        
         this.#form.addEventListener("submit",(evt)=>{
                 evt.preventDefault();
                 this.#submitButton.classList.add(this.#invalidSubmitButtonClass);
@@ -38,6 +40,20 @@ export default class FormValidation {
                         this.#submitButton.classList.add(this.#invalidSubmitButtonClass);
                         this.#submitButton.disabled=true;}
                 })
+            })
+      }
+      checkInput(){
+        this.#inputForms.forEach((item)=>{
+            this.#form.querySelector(`${this.#errorStr}${item.id}`).textContent='';
+            item.classList.remove(this.#popupInputInvalidClass);
+                    if(!this._hasInvalidInput()){
+                        this.#submitButton.classList.remove(this.#invalidSubmitButtonClass);
+                        this.#submitButton.disabled=false;
+                    }
+                    else{
+                        this.#submitButton.classList.add(this.#invalidSubmitButtonClass);
+                        this.#submitButton.disabled=true;}
+                
             })
       }
       _checkInpuValidation(item){

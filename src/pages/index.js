@@ -16,33 +16,11 @@ import {
 } from "../script/utils/constants.js";
 import { Api } from "../script/components/api.js";
 
-let   userID;
+let userID;
 
 const api = new Api({baseURL:`https://mesto.nomoreparties.co/v1/cohort-65`,headers:{
   authorization: "6af0fad8-3b2e-4d49-af39-c98a3c186d35",
   'Content-Type': 'application/json'}});
-
-function getInfoUser() {
-    api
-      .getInfo()
-      .then((res) => {
-        userInfo.setUserInfo(res)
-        userID=userInfo.getUserId();
-        console.log(userID+'-------------------------------')
-      })
-      .catch((err) => console.error(err));
-      
-  }
-  getInfoUser()
-function initialCard(){
-  api
-  .getInitialCards()
-  .then((res) => {
-    section.addItem(createCard(res[0]));
-  })
-  .catch((err) => console.error(err));
-
-}
 const popupFormProfile = new PopupWithForm({
     renderer: (items) => {
       popupFormProfile.renderLoading(true);
@@ -61,6 +39,7 @@ const popupFormProfile = new PopupWithForm({
   });
   openButtonTypeProfileChange.addEventListener("click", () => {
     popupFormProfile.open();
+    validationFormTypeChangeAvatar.checkInput();
     popupFormProfile.renderLoading(false);
     
   });
@@ -75,7 +54,7 @@ const createCard = (items) => {
   const card = new Card(
     { cards: items,
       userId: 'bc0363b9087060d2af931731',
-      //userId:getInfoUser(),
+      //userId:userID,//так не работает и через userInfo.getUserID() тоже
       renderer: () => {
         popupImage.open(items);
       },
@@ -130,13 +109,12 @@ const section = new Section(
 const popupForm = new PopupWithForm({
     renderer: (items) => {
       popupForm.renderLoading(true)
-      api.addMyCards(items.name, items.link).then(()=>{initialCard();popupForm.close();}).catch((err)=>{
+      api.addMyCards(items.name, items.link).then((res)=>{section.addItem(createCard(res));popupForm.close();}).catch((err)=>{
         console.error('Ошибка - '+err)
       }).finally(()=>{
         popupForm.renderLoading(false);
         console.info('Карточка добавлена!!!!');
         })
-      //section.renderItem(createCard(items));
     },
     popupSelector: ".popup_type_add-cards",
   });
@@ -145,6 +123,7 @@ const popupForm = new PopupWithForm({
 popupForm.setEventListeners();
 
 openButtonTypeAddCards.addEventListener("click", () => {
+  validationFormTypeAddCard.checkInput();
   popupForm.renderLoading(false)
     popupForm.open()
 });
@@ -162,8 +141,10 @@ const popupProfile = new PopupWithForm({
     .replaceInfo(data)
     .then((res)=>{
       popupProfile.renderLoading(true);
-      getInfoUser(res);}).catch((res)=>{console.log(res)}).finally(()=>{
-        popupProfile.close()
+      userInfo.setUserInfo(res);
+      popupProfile.close()
+    }).catch((res)=>{console.log(res)}).finally(()=>{
+        
         popupProfile.renderLoading(false)})
       
   },
@@ -174,6 +155,7 @@ popupProfile.setEventListeners();
 openButtonTypeProfile.addEventListener("click", function () {
   nameInput.value = userInfo.getUserInfo().name;
   popupProfile.renderLoading(false);
+  validationFormTypeProfile.checkInput();
   jobInput.value = userInfo.getUserInfo().job;
   popupProfile.open();
 });
@@ -189,6 +171,7 @@ const validationFormTypeProfile = new FormValidation(
   ".popup__content_type_profile"
 );
 validationFormTypeProfile.enableValidation();
+
 const validationFormTypeChangeAvatar=new FormValidation(
   data,
   ".popup_type_profile-change"
@@ -199,9 +182,7 @@ Promise.all([api.getInitialCards(),api.getInfo()])
   .then(([cards,userData]) => {
     section.renderItems(cards);
     userInfo.setUserInfo(userData);
-    let idUser=userInfo.getUserId();
-    
-
+    //userID=userData._id;
   }) .catch((err) => console.error(err))
 
   const popupWithConfirmation = new PopupWithSubmit(".popup_delete-card");
