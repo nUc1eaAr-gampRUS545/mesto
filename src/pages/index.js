@@ -108,7 +108,7 @@ const section = new Section(
 const popupForm = new PopupWithForm({
     renderer: (items) => {
       popupForm.renderLoading(true)
-      api.addMyCards(items.name, items.link).then((res)=>{section.addItem(createCard(res));popupForm.close();}).catch((err)=>{
+      api.addMyCards(items.name, items.link).then((res)=>{section.addItem(createCard(res,userInfo.getUserId()));popupForm.close();}).catch((err)=>{
         console.error('Ошибка - '+err)
       }).finally(()=>{
         popupForm.renderLoading(false);
