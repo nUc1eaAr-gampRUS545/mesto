@@ -45,5 +45,5 @@
 .popup__message_url{opacity:0}
 .card__group{height:35px;margin:25px 20px 25px 0;width:22px}
 .card__likes{color:#000;font-family:Inter,Arial,sans-serif;font-size:13px;font-style:normal;font-weight:400;line-height:16px;margin:0;text-align:center}
-.profile__avatar-button{background:url(a086f758840ae814ecde.svg) 50% no-repeat;background-position:50%;background-repeat:no-repeat;border:0;border-radius:50%;height:120px;margin:0;max-width:120px;-o-object-fit:cover;object-fit:cover;opacity:1;padding:0;z-index:2}.popup_type_profile-change{display:none}
+.profile__avatar-button{background:url(a086f758840ae814ecde.svg) 50% no-repeat;background-position:50%;background-repeat:no-repeat;border:0;border-radius:50%;height:120px;margin:0;max-width:120px;-o-object-fit:cover;object-fit:cover;opacity:1;padding:0;z-index:0}.popup_type_profile-change{display:none}
 
