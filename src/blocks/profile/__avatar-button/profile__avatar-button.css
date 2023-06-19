@@ -11,9 +11,14 @@
   border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
-  margin: 0;
+  margin: 0 20px 0 0 ;
   object-fit: cover;
 }
 .popup_type_profile-change{
     display: none;
+}
+@media screen and (max-width: 881px) {
+  .profile__avatar-button {
+    margin: 0;
+  }
 }
