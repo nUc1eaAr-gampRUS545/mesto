@@ -19,6 +19,6 @@
 }
 @media screen and (max-width: 881px) {
   .profile__avatar-button {
-    margin: 0;
+    margin: 10px 0;
   }
 }
